@@ -1,4 +1,21 @@
 .App {
-  font-family: sans-serif;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.Note {
+  display: flex;
+}
+.Sublist {
+  margin-left: 50px;
+}
+
+.inlineP {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.SubInput {
+  margin-left: 50px;
 }
