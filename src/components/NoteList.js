@@ -21,6 +21,7 @@ class NoteList extends React.Component {
     });
   };
 
+  //adds a note to sublist
   addSubnote = (id, note) => {
     this.setState((state) => {
       state.sublist.push({ id: uuid(), title: note, parent: id });
@@ -39,6 +40,7 @@ class NoteList extends React.Component {
     });
   };
 
+  //remove a note from sublist
   deleteSubnote = (id) => {
     this.setState((state) => {
       state.sublist = state.sublist.filter(
@@ -48,6 +50,7 @@ class NoteList extends React.Component {
     });
   };
 
+  //remove all subnotes
   deleteSubnotes = (id) => {
     this.setState((state) => {
       state.sublist = state.sublist.filter((item) => item.parent !== id);
@@ -55,15 +58,18 @@ class NoteList extends React.Component {
     });
   };
 
+  //finds position of notes in sublist
   findPosition = (id) => {
     let position = this.state.sublist.map((subnote) => subnote.id).indexOf(id);
     return position;
   };
 
+  //change two notes in array
   shift = (arr, a, b) => {
     arr[a] = arr.splice(b, 1, arr[a])[0];
   };
 
+  //move an item from main list up
   moveItemUp = (position) => {
     this.setState((state) => {
       this.shift(state.notes, position, position - 1);
@@ -71,6 +77,7 @@ class NoteList extends React.Component {
     });
   };
 
+  //move an item from main list down
   moveItemDown = (position) => {
     this.setState((state) => {
       this.shift(state.notes, position, position + 1);
@@ -78,6 +85,7 @@ class NoteList extends React.Component {
     });
   };
 
+  //move an item from sublist up
   moveSubItemUp = (position) => {
     let pos2 = position - 1;
     this.setState((state) => {
@@ -88,6 +96,8 @@ class NoteList extends React.Component {
       return state;
     });
   };
+
+  //move an item from sublist down
   moveSubItemDown = (position) => {
     let pos2 = position + 1;
     this.setState((state) => {
