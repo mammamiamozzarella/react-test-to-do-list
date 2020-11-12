@@ -1,43 +1,40 @@
 import React from "react";
 import SubnoteInput from "./SubnoteInput";
-
-const Note = ({ note, ...props }) => {
+import Subnote from "./Subnote";
+const Note = ({ note, sublist, ...props }) => {
+  let child = sublist.filter((item) => item.parent === note.id);
   const ActionBtn = () => (
-    <div className="ActionBtn">
-      <p className="inlineP" onClick={props.deleteNote}>
-        X
-      </p>
-      {note.id > 0 ? (
-        <p className="inlineP" onClick={props.upNote}>
-          Up
-        </p>
-      ) : (
-        ""
+    <span className="ActionBtn">
+      <button onClick={props.deleteNote}>X</button>
+      {props.pos !== 0 ? <button onClick={props.moveItemUp}>Up</button> : null}
+      {props.pos !== props.long - 1 ? (
+        <button onClick={props.moveItemDown}>Down</button>
+      ) : null}
+      {child ? null : (
+        <button onClick={props.deleteSubnotes}>Delete Subnotes</button>
       )}
-      {note.id < props.long - 1 ? (
-        <p className="inlineP" onClick={props.downNote}>
-          Down
-        </p>
-      ) : (
-        ""
-      )}
-      {!note.add ? (
-        <p className="inlineP" onClick={props.addSublist}>
-          AddSublist
-        </p>
-      ) : (
-        <p className="inlineP" onClick={props.deleteSublist}>
-          RemoveSublist
-        </p>
-      )}
-    </div>
+    </span>
   );
 
   return (
-    <div className="Note">
-      <p className="NoteTitle">{note.title}</p>
+    <li className="Note">
+      {note.title}
       <ActionBtn></ActionBtn>
-    </div>
+      <Subnote
+        deleteSubnote={props.deleteSubnote}
+        deleteSubnotes={props.deleteSubnotes}
+        addSubnote={props.addSubnote}
+        moveItemUp={props.moveSubItemUp}
+        moveItemDown={props.moveSubItemDown}
+        moveSubItemUp={props.moveSubItemUp}
+        moveSubItemDown={props.moveSubItemDown}
+        findPosition={props.findPosition}
+        key={note.id}
+        sublist={sublist}
+        note={note}
+      ></Subnote>
+      <SubnoteInput note={note} addSubnote={props.addSubnote}></SubnoteInput>
+    </li>
   );
 };
 
