@@ -23,7 +23,7 @@ const Subnote = ({ sublist, note, ...props }) => {
           findPosition={props.findPosition}
           long={subnotelist.length}
           deleteNote={() => props.deleteSubnote(item.id)}
-          deleteSubnotes={() => props.deleteSubnotes(item.id)}
+          deleteSubnotes={props.deleteSubnotes}
           deleteSubnote={props.deleteSubnote}
         ></Note>
       ))}

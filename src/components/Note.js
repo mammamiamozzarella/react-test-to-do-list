@@ -10,9 +10,11 @@ const Note = ({ note, sublist, ...props }) => {
       {props.pos !== props.long - 1 ? (
         <button onClick={props.moveItemDown}>Down</button>
       ) : null}
-      {child ? null : (
-        <button onClick={props.deleteSubnotes}>Delete Subnotes</button>
-      )}
+      {child.length > 0 ? (
+        <button onClick={() => props.deleteSubnotes(note.id)}>
+          Delete Subnotes
+        </button>
+      ) : null}
     </span>
   );
 

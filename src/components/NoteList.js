@@ -129,7 +129,7 @@ class NoteList extends React.Component {
               moveSubItemUp={this.moveSubItemUp}
               moveSubItemDown={this.moveSubItemDown}
               deleteSubnote={this.deleteSubnote}
-              deleteSubnotes={() => this.deleteSubnotes(note.id)}
+              deleteSubnotes={this.deleteSubnotes}
               addSubnote={this.addSubnote}
               long={this.state.notes.length}
               sublist={this.state.sublist}
