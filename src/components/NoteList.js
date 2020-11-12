@@ -121,8 +121,6 @@ class NoteList extends React.Component {
               key={note.id}
               note={note}
               pos={index}
-              downNote={() => this.downNote(note.id)}
-              upNote={() => this.upNote(note.id)}
               deleteNote={() => this.deleteNote(note.id)}
               moveItemUp={() => this.moveItemUp(index)}
               moveItemDown={() => this.moveItemDown(index)}
